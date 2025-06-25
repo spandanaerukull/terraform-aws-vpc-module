@@ -99,3 +99,12 @@ variable "database_route_table_tags" {
     description = "Tags to apply to the database route table"
     default     = {} # by giving default , it becomes as an optional, if user does not provide any tags, it will take default value as empty map
 }
+
+variable "is_peering_required" {
+  default = false
+}
+
+variable "vpc_peering_tags" {
+  type = map(string)
+  default ={}
+}
