@@ -167,19 +167,19 @@ resource "aws_route_table" "database" {
 # this code belongs to route creation
 resource "aws_route" "public" {
   route_table_id         = aws_route_table.public.id # this is the route table for the public subnet
-  destination_cidr_block = "0.0.0.0/0" # this allows all traffic to the internet
+  destination_cidr_block = "0.0.0.0/0" # this means sending all the traffic from private subnet to nat gate  by giving this cidr blocks , the request comes from private to nat right ? 
   gateway_id = aws_internet_gateway.main.id # this associates the route with the Internet Gateway
   }
 
   resource "aws_route" "private" {
   route_table_id         = aws_route_table.private.id # this is the route table for the private subnet
-  destination_cidr_block = "0.0.0.0/0" # this allows all traffic to the internet
+  destination_cidr_block = "0.0.0.0/0" # this means sending all the traffic from private subnet to nat gate  by giving this cidr blocks , the request comes from private to nat right ?
   nat_gateway_id = aws_nat_gateway.main.id # this associates the route with the NAT Gateway
   }
 
   resource "aws_route" "database" {
   route_table_id         = aws_route_table.database.id # this is the route table for the database subnet
-  destination_cidr_block = "0.0.0.0/0" # this allows all traffic to the internet
+  destination_cidr_block = "0.0.0.0/0" # this means sending all the traffic from database subnet to nat gate  by giving this cidr blocks , the request comes from database to nat right ?
   nat_gateway_id = aws_nat_gateway.main.id # this associates the route with the NAT Gateway
   }
 
