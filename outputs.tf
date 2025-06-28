@@ -14,3 +14,8 @@ output "private_subnet_ids" { # Exports the IDs of the private subnets created b
   value = aws_subnet.private[*].id # List of all private subnet IDs
 }
  
+ output "database_subnet_ids" { # Exports the IDs of the database subnets created by the module
+    description = "The IDs of the database subnets created by the module"
+  value = aws_subnet.database[*].id # List of all database subnet IDs
+   
+ }
